@@ -15,7 +15,7 @@
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
             ControlToValidate="campusselect" ErrorMessage="Please select a campus" Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
         <%-- This version will reuse 3 individual panels for displaying questions and responses
-            there is a Yes/No panel, a Ratings panel and a Comments panel. THis allows for any amount and variation of question to be generated 
+            there is a Yes/No panel, a Ratings panel and a Comments panel. THis allows fany amount and variation of question to be generated 
             and the code will handle it --%>
         <%-- DT 10.6 Added the Coral Springs option back but it will display the same options as the NOrth Campus--%>
         <%-- DT 10.6 added some formatting for a more uniform look --%>
