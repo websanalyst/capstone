@@ -216,7 +216,9 @@
          </h2>   
          <br />
             &nbsp;<%-- NE_140924; <h1>Additional Comments</h1><br /> --%><asp:TextBox ID="TextBoxCmt" runat="server" Height="51px" Width="240px"></asp:TextBox>
-            <asp:Button ID="ButtonSubmitCmt" runat="server" Text="Submit" />
+            <%--<asp:Button ID="ButtonSubmitCmt" runat="server" Text="Submit" />--%> 
+          <asp:Button ID="ButtonSubmit1" runat="server" Text="Submit" />
+
         
 
 
@@ -282,8 +284,8 @@
             </asp:RadioButtonList>
             <br />
             &nbsp;<%-- NE_140924; <h1>Additional Comments</h1><br /> --%><asp:TextBox ID="TextBox4" runat="server" Height="51px" Width="240px"></asp:TextBox>
-            <asp:Button ID="ButtonSubmit1" runat="server" Text="Submit" />
         
+            
 
 
     </asp:Panel>

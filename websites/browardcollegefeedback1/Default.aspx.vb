@@ -133,30 +133,30 @@ Partial Class _Default
     PanelComments.Visible = True
     PanelYesNo.Visible = True
     PanelRatings.Visible = True
-        RadioButtonListYN.SelectedIndex = -1
-        RadioButtonListRat.SelectedIndex = -1
-        If int2 < int1 Then
-            Dim rowx As GridViewRow = ddlQuestions.Rows(int2)
-            QuID = rowx.Cells(1).Text
-            Select Case rowx.Cells(5).Text
-        Case "1"
-          PanelComments.Visible = True
-          LabelCmt.Text = rowx.Cells(2).Text
-                Case "2"
-                    PanelYesNo.Visible = True
-                    LabelYN.Text = rowx.Cells(2).Text
-                Case "3"
-                    PanelRatings.Visible = True
-                    LabelRat.Text = rowx.Cells(2).Text
-            End Select
-            int2 = int2 + 1
-        Else
-            'NE_141008.0150 - change here to remove last submit panel, just submit the form and quit
-            'PanelDone.Visible = True
-            SubmitForm()
-      PanelSubmit.Visible = True
+    '  RadioButtonListYN.SelectedIndex = -1
+    '  RadioButtonListRat.SelectedIndex = -1
+    '  If int2 < int1 Then
+    '      Dim rowx As GridViewRow = ddlQuestions.Rows(int2)
+    '      QuID = rowx.Cells(1).Text
+    '      Select Case rowx.Cells(5).Text
+    '  Case "1"
+    '    PanelComments.Visible = True
+    '    LabelCmt.Text = rowx.Cells(2).Text
+    '          Case "2"
+    '              PanelYesNo.Visible = True
+    '              LabelYN.Text = rowx.Cells(2).Text
+    '          Case "3"
+    '              PanelRatings.Visible = True
+    '              LabelRat.Text = rowx.Cells(2).Text
+    '      End Select
+    '      int2 = int2 + 1
+    '  Else
+    '      'NE_141008.0150 - change here to remove last submit panel, just submit the form and quit
+    '      'PanelDone.Visible = True
+    '      SubmitForm()
+    ''PanelSubmit.Visible = True
 
-        End If
+    'End If
     End Sub
 
     Protected Sub GetQuestions()
@@ -222,25 +222,30 @@ Partial Class _Default
     'NE_140928 This rutine will no longer be used and can be removed. The YN, Rat and Cmt subs take it s place.
     'NE_0924; the following Sub was accedentally deleted and so the program kept reloading the Admissions page 
     ' because there was nowhere for the SUBMIT to go. The next task is to change the 5 to reflect the correct location to store the answers.
-    Protected Sub ButtonSubmit1_Click(sender As Object, e As EventArgs) Handles ButtonSubmit1.Click
-        PanelAdmissions.Visible = False
-        PanelSubmit.Visible = True
+  Protected Sub ButtonSubmit1_Click(sender As Object, e As EventArgs) Handles ButtonSubmit1.Click
+    SubmitForm() '11/24/14 Beau add the submit function to execute after the submit button is click
+    PanelAdmissions.Visible = False '11/24 Beau add
+    PanelComments.Visible = False '11/24 Beau add
+    PanelRatings.Visible = False '11/24 Beau add
+    PanelYesNo.Visible = False '11/24 Beau add
+    PanelSubmit.Visible = True
 
-        'NE_140924; Replace 5 with DeptID to save answers in the correct row in table.
-        ' QuestionIds = QuestionIds + "5,"
-        DeptID = DropDownList1.SelectedValue + 4
-        QuestionIds = QuestionIds + DeptID + ","
-        AnswerIDs = AnswerIDs + RadioButtonList11.SelectedValue + ","
+    'NE_140924; Replace 5 with DeptID to save answers in the correct row in table.
+    ' QuestionIds = QuestionIds + "5,"
+    DeptID = DropDownList1.SelectedValue + 4
+    QuestionIds = QuestionIds + DeptID + ","
+    AnswerIDs = AnswerIDs + RadioButtonList11.SelectedValue + ","
 
-        'NE_140924; swap 3 and 4 for the QuestionIds to reflect change in table
-        QuestionIds = QuestionIds + "4,"
-        AnswerIDs = AnswerIDs + RadioButtonList3.SelectedValue + ","
+    'NE_140924; swap 3 and 4 for the QuestionIds to reflect change in table
+    QuestionIds = QuestionIds + "4,"
+    AnswerIDs = AnswerIDs + RadioButtonList3.SelectedValue + ","
 
-        QuestionIds = QuestionIds + "3,"
-        AnswerIDs = AnswerIDs + TextBox4.Text + ","
+    QuestionIds = QuestionIds + "3,"
+    AnswerIDs = AnswerIDs + TextBox4.Text + ","
 
-    SubmitForm()
-    End Sub
+
+
+  End Sub
 
     'NE_140928; this should be the last panel after all the questions are answered and the user is ready to submit the form
     Protected Sub ButtonDone_Click(sender As Object, e As EventArgs) Handles ButtonDone.Click
@@ -278,19 +283,19 @@ Partial Class _Default
   'End Sub
 
   'NE_140928; This sub adds Comments answers to the answer form.
-  Protected Sub ButtonSubmitCmt_Click(sender As Object, e As EventArgs) Handles ButtonSubmitCmt.Click
-    PanelAdmissions.Visible = False
-    PanelComments.Visible = True
+  'Protected Sub ButtonSubmitCmt_Click(sender As Object, e As EventArgs) Handles ButtonSubmitCmt.Click
+  '  PanelAdmissions.Visible = False
+  '  PanelComments.Visible = True
 
-    'NE_140928; build question and answer string for the database
-    QuestionIds = QuestionIds + QuID + ","
-    AnswerIDs = AnswerIDs + TextBoxCmt.Text + ","
+  '  'NE_140928; build question and answer string for the database
+  '  QuestionIds = QuestionIds + QuID + ","
+  '  AnswerIDs = AnswerIDs + TextBoxCmt.Text + ","
 
-    'NE_140929; Testing a trick. I will now call a sub to build a web page based on the next question
-    BuildNextPage()
+  '  'NE_140929; Testing a trick. I will now call a sub to build a web page based on the next question
+  '  BuildNextPage()
 
 
-  End Sub
+  'End Sub
 
   Public Sub SubmitForm()
     PanelSubmit.Visible = True
