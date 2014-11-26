@@ -66,9 +66,9 @@
            
         
         <asp:RequiredFieldValidator ID="RequiredFieldValidatorYN" runat="server"
-            ControlToValidate="RadioButtonListYN" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            ControlToValidate="DropDownListYN" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
                 <!--Changed RadioButtonList to DropDownList *Octavio* -->
-                <asp:DropDownList ID="RadioButtonListYN" runat="server" RepeatDirection="Horizontal" Width="834px" TextAlign="Left">
+                <asp:DropDownList ID="DropDownListYN" runat="server" RepeatDirection="Horizontal" Width="834px" TextAlign="Left">
                 <asp:ListItem>Yes</asp:ListItem>
                 <asp:ListItem>No</asp:ListItem>
             </asp:DropDownList>
@@ -92,10 +92,10 @@
          </h2>   
         
             <%-- <h1>* How satisfied were you with the service you received?</h1> --%>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidatorRat" runat="server" ControlToValidate="RadioButtonListRat" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidatorRat" runat="server" ControlToValidate="DropDownListRat" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
             <br />
              <!--Changed RadioButtonList to DropDownList *Octavio* -->
-             <asp:DropDownList ID="RadioButtonListRat" runat="server" RepeatDirection="Horizontal" RepeatLayout="Table" CssClass="RBL" TextAlign="Left" Width="603px">
+             <asp:DropDownList ID="DropDownListRat" runat="server" RepeatDirection="Horizontal" RepeatLayout="Table" CssClass="RBL" TextAlign="Left" Width="603px">
                 <asp:ListItem>Very satisfied</asp:ListItem>
                 <asp:ListItem>Satisfied</asp:ListItem>
                 <asp:ListItem>Neutral</asp:ListItem>
@@ -158,22 +158,22 @@
        
         
         <asp:RequiredFieldValidator ID="RequiredFieldValidator3" runat="server"
-            ControlToValidate="RadioButtonList11" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            ControlToValidate="DropDownList11" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
           
        
             <!--Changed RadioButtonList to DropDownList *Octavio* -->
-            <asp:DropDownList ID="RadioButtonList11" runat="server" RepeatDirection="Horizontal" Width="834px" TextAlign="Left">
+            <asp:DropDownList ID="DropDownList11" runat="server" RepeatDirection="Horizontal" Width="834px" TextAlign="Left">
                 <asp:ListItem>Yes</asp:ListItem>
                 <asp:ListItem>No</asp:ListItem>
             </asp:DropDownList>
          
                 
             <%--<h1>* How satisfied were you with the service you received?</h1> --%>
-            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="RadioButtonList3" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
+            <asp:RequiredFieldValidator ID="RequiredFieldValidator4" runat="server" ControlToValidate="DropDownList3" ErrorMessage="Please choose one." Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
             <br />
           
             <!--Changed RadioButtonList to DropDownList *Octavio* -->
-            <asp:DropDownList ID="RadioButtonList3" runat="server" TextAlign="Left" Width="603px">
+            <asp:DropDownList ID="DropDownList3" runat="server" TextAlign="Left" Width="603px">
                 <asp:ListItem>Very dissatisfied</asp:ListItem>
                 <asp:ListItem>Dissatisfied</asp:ListItem>
                 <asp:ListItem>Neutral</asp:ListItem>

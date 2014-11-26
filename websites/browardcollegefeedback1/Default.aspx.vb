@@ -98,8 +98,8 @@ Partial Class _Default
         PanelComments.Visible = False
         PanelYesNo.Visible = False
         PanelRatings.Visible = False
-        RadioButtonListYN.SelectedIndex = -1
-        RadioButtonListRat.SelectedIndex = -1
+        DropDownListYN.SelectedIndex = -1
+        DropDownListRat.SelectedIndex = -1
 
         If int2 < int1 Then
             Dim rowx As GridViewRow = ddlQuestions.Rows(int2)
@@ -178,11 +178,11 @@ Partial Class _Default
 
         DeptID = DropDownList1.SelectedValue + 4
         QuestionIds = QuestionIds + DeptID + ","
-        AnswerIDs = AnswerIDs + RadioButtonList11.SelectedValue + ","
+        AnswerIDs = AnswerIDs + DropDownList11.SelectedValue + ","
 
         'NE_140924; swap 3 and 4 for the QuestionIds to reflect change in table
         QuestionIds = QuestionIds + "4,"
-        AnswerIDs = AnswerIDs + RadioButtonList3.SelectedValue + ","
+        AnswerIDs = AnswerIDs + DropDownList3.SelectedValue + ","
 
         QuestionIds = QuestionIds + "3,"
         AnswerIDs = AnswerIDs + TextBox4.Text + ","
@@ -208,7 +208,7 @@ Partial Class _Default
 
         'Build question and answer string for the database
         QuestionIds = QuestionIds + QuID + ","
-        AnswerIDs = AnswerIDs + RadioButtonListYN.SelectedValue + ","
+        AnswerIDs = AnswerIDs + DropDownListYN.SelectedValue + ","
 
         'Testing a trick. I will now call a sub to build a web page based on the next question
         BuildNextPage()
@@ -223,7 +223,7 @@ Partial Class _Default
 
         'Build question and answer string for the database
         QuestionIds = QuestionIds + QuID + ","
-        AnswerIDs = AnswerIDs + RadioButtonListRat.SelectedValue + ","
+        AnswerIDs = AnswerIDs + DropDownListRat.SelectedValue + ","
 
         'Testing a trick. I will now call a sub to build a web page based on the next question
         BuildNextPage()
