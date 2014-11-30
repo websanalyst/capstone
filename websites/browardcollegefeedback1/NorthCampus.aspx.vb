@@ -1,5 +1,6 @@
 ﻿
 Partial Class _Default
+
     Inherits System.Web.UI.Page
 
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
@@ -22,4 +23,5 @@ Partial Class _Default
     Protected Sub btnBack1_Click(sender As Object, e As EventArgs) Handles btnBack1.Click
 
     End Sub
+
 End Class

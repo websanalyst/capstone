@@ -1,17 +1,19 @@
 ﻿Imports System.Data
 Imports System.Data.SqlClient
 
+
 Partial Class CreateAQuestion
+
     Inherits System.Web.UI.Page
 
-    ' Dim ddlQuestions As Object
+
     Dim lblError As Object
 
 
-
     Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
+
         Dim dsQuestions As DataSet
-        Dim connetionString As String
+        Dim connectionString As String
         Dim connection As SqlConnection
         Dim command As SqlCommand
         Dim adapter As New SqlDataAdapter
@@ -19,12 +21,13 @@ Partial Class CreateAQuestion
         Dim i As Integer
         Dim sql As String
 
-        connetionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
-        'Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf
+        connectionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
+
         sql = "select * from question"
 
 
-        connection = New SqlConnection(connetionString)
+        connection = New SqlConnection(connectionString)
+
 
         Try
             connection.Open()
@@ -36,7 +39,6 @@ Partial Class CreateAQuestion
             connection.Close()
 
             For i = 0 To ds.Tables(0).Rows.Count - 1
-                '  ddlQuestions.Items.Add(New ListItem(ds.Tables(0).Rows(i).Item(1), ds.Tables(0).Rows(i).Item(0).ToString))
             Next
 
         Catch ex As Exception
@@ -45,8 +47,6 @@ Partial Class CreateAQuestion
         End Try
 
 
-
-        'For Each Row As DataRow In dsData.Tables(0).Rows
 
 
     End Sub
@@ -75,7 +75,7 @@ Partial Class CreateAQuestion
     Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         'this is where save question code goes
         Dim dsQuestions As DataSet
-        Dim connetionString As String
+        Dim connectionString As String
         Dim connection As SqlConnection
         Dim command As SqlCommand
         Dim adapter As New SqlDataAdapter
@@ -93,14 +93,11 @@ Partial Class CreateAQuestion
 
 
 
-        connetionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
-        'Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf
+        connectionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
         sql = "insert into question (QuestionText, isRequired, CategoryID, QuestionTypeID, isActive) Values ('" + TextBox1.Text + "', " + iCheckboxResult.ToString + " , " + DropDownList2.SelectedValue.ToString + " , " + DropDownList5.SelectedValue.ToString + ",1)"
 
 
-        ' and put checkbox into boolean variable number
-
-        connection = New SqlConnection(connetionString)
+        connection = New SqlConnection(connectionString)
 
         Try
             connection.Open()
@@ -119,7 +116,6 @@ Partial Class CreateAQuestion
 
 
         LabelMessage.Text = "Your question has been created! "
-        'For Each Row As DataRow In dsData.Tables(0).Rows
 
     End Sub
 
@@ -127,11 +123,11 @@ Partial Class CreateAQuestion
     Protected Sub DropDownList3_DataBound(sender As Object, e As EventArgs) Handles DropDownList3.DataBound
     End Sub
 
+
     Protected Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
 
-
         Dim dsQuestions As DataSet
-        Dim connetionString As String
+        Dim connectionString As String
         Dim connection As SqlConnection
         Dim command As SqlCommand
         Dim adapter As New SqlDataAdapter
@@ -141,16 +137,14 @@ Partial Class CreateAQuestion
 
 
 
-        connetionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
-        'Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf
+        connectionString = "Data Source=(LocalDb)\v11.0;Initial Catalog=aspnet-BrowardCollegeFeedback1-20140629104817;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\aspnet-BrowardCollegeFeedback1-20140629104817.mdf"
         sql = "select * from question '( QuestionTypeID ) Values ('" + DropDownList5.SelectedValue.ToString + ",1)"
 
 
 
-        connection = New SqlConnection(connetionString)
+        connection = New SqlConnection(connectionString)
 
         Try
-
 
             connection.Open()
             command = New SqlCommand(sql, connection)
@@ -166,7 +160,6 @@ Partial Class CreateAQuestion
         Catch ex As Exception
 
         End Try
-
 
 
     End Sub
