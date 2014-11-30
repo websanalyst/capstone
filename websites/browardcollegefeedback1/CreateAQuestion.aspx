@@ -81,7 +81,8 @@
     <br />
     <asp:DropDownList style="margin:auto" ID="DropDownList3" runat="server" DataSourceID="SqlDataSource5" DataTextField="QuestionText" DataValueField="QuestionId" Height="31px" Width="391px">
     </asp:DropDownList>
-    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Question]"></asp:SqlDataSource>
+    <%-- SQL statement was modified to include WHERE the isActive field is set to true --Keiron --%>
+    <asp:SqlDataSource ID="SqlDataSource5" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Question] WHERE (isActive = 1)"></asp:SqlDataSource>
         <br />
     <br />
 
@@ -103,7 +104,8 @@
         <br />
         <asp:DropDownList ID="DropDownList4" runat="server" DataSourceID="SqlDataSource6" DataTextField="QuestionText" DataValueField="QuestionId" Height="31px" Width="391px">
         </asp:DropDownList>
-        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Question]"></asp:SqlDataSource>
+        <%-- SQL statement was modified to include WHERE the isActive field is set to false --Keiron --%>
+        <asp:SqlDataSource ID="SqlDataSource6" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Question] WHERE (isActive = 0)"></asp:SqlDataSource>
     <br />
     <br />
 <asp:Button style="margin:auto" ID="Button7" runat="server" Text="Activate" Width="107px" />
@@ -143,4 +145,3 @@
         </asp:Panel>
 </asp:Content>
 
- 
