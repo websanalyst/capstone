@@ -4,37 +4,44 @@
     <div class="auto-style6"  style="margin-left: 0px">
     <asp:Label ID="lblError" runat="server" Text="" CssClass="auto-style5"></asp:Label>
     <div class="auto-style5"  style="margin-left: 0px">
-    <asp:Panel ID="PanelCampus" runat="server" Visible="true" style="margin-left: 36px">
+    
+
+      <%-- This version will reuse 3 individual panels for displaying questions and responses
+            there is a Yes/No panel, a Ratings panel and a Comments panel. THis allows for any amount and variation of question to be generated 
+            and the code will handle it --%>
+      
+      <asp:Panel ID="PanelCampus" runat="server" Visible="true" style="margin-left: 36px">
 
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server"
             ControlToValidate="campusselect" ErrorMessage="Please select a campus" Font-Bold="True" Font-Underline="True" ForeColor="#CC0000"></asp:RequiredFieldValidator>
         <%-- This version will reuse 3 individual panels for displaying questions and responses
-            there is a Yes/No panel, a Ratings panel and a Comments panel. THis allows for any amount and variation of question to be generated 
+            there is a Yes/No panel, a Ratings panel and a Comments panel. THis allows fany amount and variation of question to be generated 
             and the code will handle it --%>
         <%-- DT 10.6 Added the Coral Springs option back but it will display the same options as the NOrth Campus--%>
         <%-- DT 10.6 added some formatting for a more uniform look --%>
 
-        <h1>* Which campus location would you like to rate today?</h1>
+        <h1>Which campus location would you like to rate today?</h1>
 
         <asp:RadioButtonList ID="campusselect" runat="server" RepeatDirection="Horizontal" TextAlign="Left" Width="955px">
             <asp:ListItem Value="North" Text="North Campus"></asp:ListItem>
             <asp:ListItem Value="Coral" Text="Coral Springs Campus"></asp:ListItem>
         </asp:RadioButtonList>
 
-        
-       
-        <asp:Button ID="ButtonNext1" runat="server" Text="Next" />
+        <asp:Button ID="ButtonNext1" runat="server" Text="Continue" />
+
 
     </asp:Panel> 
 
+      <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%>
     <div class="auto-style4">
 
         <div class="auto-style5">
 
+      <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%>
+
     <asp:Panel ID="PanelServiceNorth" runat="server" Visible="false">
-    
-        
-        <h1>* Which student service would you like to rate today?</h1> 
+      
+        <h1>* Which student service of North would you like to rate today?</h1> 
         <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%>
         <%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Dropdownlist1" ErrorMessage="Please choose a service" Font-Bold="True" Font-Underline="True" ForeColor="#CC0000" InitialValue="--Select--"> </asp:RequiredFieldValidator> --%>
         <%--  Note- in order for selected list value to be saved AutoPostBack must be TRUE (checked in setup) --%>
@@ -46,10 +53,25 @@
          <asp:Button ID="ButtonNext2" runat="server" Text="Next" />
 
        <%-- <asp:ListItem>--Select--</asp:ListItem> --%>
+      </asp:Panel>
+        <asp:Panel ID="PanelServiceCoral" runat="server" Visible="false">
+          <h1>* Which student service of Coral would you like to rate today?</h1>
+          <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%><%--  <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="Dropdownlist1" ErrorMessage="Please choose a service" Font-Bold="True" Font-Underline="True" ForeColor="#CC0000" InitialValue="--Select--"> </asp:RequiredFieldValidator> --%><%--  Note- in order for selected list value to be saved AutoPostBack must be TRUE (checked in setup) --%>
+          <asp:DropDownList ID="DropDownList2" runat="server" AutoPostBack="True" DataSourceID="GetCat1" DataTextField="CategoryName" DataValueField="CategoryId">
+          </asp:DropDownList>
+          <asp:SqlDataSource ID="GetCat2" runat="server" ConnectionString="<%$ ConnectionStrings:DefaultConnection %>" SelectCommand="SELECT * FROM [Category]"></asp:SqlDataSource>
+          <asp:Button ID="ButtonNext3" runat="server" Text="Next" />
+          <%-- <asp:ListItem>--Select--</asp:ListItem> --%>
+        </asp:Panel>
 
-    </asp:Panel>
+    
 
-    <%-- NE_140928; here I am adding new code for new panels this one for Yes/NO questions--%>
+          <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%>
+
+      <%--  <asp:ListItem>--Select--</asp:ListItem> : These two lines not needed when using teh database : --%>
+
+          <%-- the following code was used to display all teh questions from the database and is no necessary --%>
+    <%-- the following code was used to display all teh questions from the database and is no necessary --%>
     </div>
         </div>
 <div class="auto-style4">
@@ -90,10 +112,18 @@
                 <asp:ListItem>No</asp:ListItem>
             </asp:RadioButtonList>
          
-        <asp:Button ID="ButtonSubmitYN" runat="server" Text="Submit" />
+        <%--<asp:Button ID="ButtonSubmitYN" runat="server" Text="Submit" />--%>
         </asp:Panel>
 
-    <%-- NE_140928; This panel is for ratings --%>
+    <%-- DT 09.21 The following code creates the grid with just the header and questions. 
+        It sets autogeneratecolumns to false to avoid populating the other columns like question IDs etc. 
+           We no longer need to see the gridview
+
+    <asp:GridView ID="GridView2" autogeneratecolumns="True" runat="server">
+        <Columns>
+            <asp:BoundField DataField="QuestionText" HeaderText="Questions:" />
+        </Columns>
+    </asp:GridView>  --%>
     </div>
         </div>
 <div class="auto-style4">
@@ -143,16 +173,24 @@
                 <asp:ListItem>Very satisfied</asp:ListItem>
             </asp:RadioButtonList> --%>
             <br />
-            <asp:Button ID="ButtonSubmitRat" runat="server" Text="Submit" />
+           <%-- <asp:Button ID="ButtonSubmitRat" runat="server" Text="Submit" />--%>
         
     </asp:Panel>
 
-    <%-- NE_140928; THis panel is for comments --%>
+    <%-- DT 09.21 The following code creates the grid with just the header and questions. 
+        It sets autogeneratecolumns to false to avoid populating the other columns like question IDs etc. 
+           We no longer need to see teh GridView
+
+    <asp:GridView ID="GridView3" autogeneratecolumns="True" runat="server">
+        <Columns>
+            <asp:BoundField DataField="QuestionText" HeaderText="Questions:" />
+        </Columns>
+    </asp:GridView> --%>
         </div>
         </div>
 <div class="auto-style4">
         <div class="auto-style5">
-        <asp:Panel ID="PanelComments" runat="server" Visible="false">
+        <asp:Panel ID="PanelComments" runat="server" Visible="False">
      
        <%-- DT 09.21 The following code creates the grid with just the header and questions. 
         It sets autogeneratecolumns to false to avoid populating the other columns like question IDs etc. 
@@ -178,12 +216,15 @@
          </h2>   
          <br />
             &nbsp;<%-- NE_140924; <h1>Additional Comments</h1><br /> --%><asp:TextBox ID="TextBoxCmt" runat="server" Height="51px" Width="240px"></asp:TextBox>
-            <asp:Button ID="ButtonSubmitCmt" runat="server" Text="Submit" />
+            <%--<asp:Button ID="ButtonSubmitCmt" runat="server" Text="Submit" />--%> 
+          <asp:Button ID="ButtonSubmit1" runat="server" Text="Submit" />
+
         
 
 
     </asp:Panel>
-    <%-- NE_0923; moved Panel line to here, it was below the GridView  --%>
+          <%-- DT 09.21 The following code creates the grid with just the header and questions. 
+        It sets autogeneratecolumns to false to avoid populating the other columns like question IDs etc.  --%>
     </div>
         </div>
 <div class="auto-style4">
@@ -243,21 +284,20 @@
             </asp:RadioButtonList>
             <br />
             &nbsp;<%-- NE_140924; <h1>Additional Comments</h1><br /> --%><asp:TextBox ID="TextBox4" runat="server" Height="51px" Width="240px"></asp:TextBox>
-            <asp:Button ID="ButtonSubmit1" runat="server" Text="Submit" />
         
+            
 
 
     </asp:Panel>
 
-    <%-- code was removed here because it was used for the hard coded version which displayed 
-        different panels for each question. The three panel version replaces this code.--%>
+    <%-- NE 10/07/14; THis panel is no longer used. It can be recalled for diagnostic purposes to stop the program before submitting the answers to the database --%>
 
         </div>
 
         </div>
 
         </div>
-        <%--NE 10/07/14; Thi panel was added to give the user some options before starting the survey, continue, start over or exit --%>
+        <%-- This is the last panel --%>
         <asp:Panel ID="PanelContinue" runat="server" Visible="false" CssClass="auto-style4">
               <h2>
               <asp:Label ID="LabelDept" runat="server" Text="Department"></asp:Label>
@@ -269,7 +309,7 @@
               <br />
             
         </asp:Panel> 
-        <%-- NE 10/07/14; THis panel is no longer used. It can be recalled for diagnostic purposes to stop the program before submitting the answers to the database --%>
+    <%-- This is the last panel --%>
         <asp:Panel ID="PanelDone" runat="server" Visible="false" CssClass="auto-style4">
             <h1>* You have completed all the questions. Click SUBMIT to post your answers</h1><br />
             <asp:Button ID="ButtonDone" runat="server" Text="Submit" />
